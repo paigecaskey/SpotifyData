@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import NowPlaying from './components/NowPlaying';
+import TopArtists from './components/TopArtists';
+import './styles.css'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [currentComponent, setCurrentComponent] = useState(null);
+
+    const handleClick = (component) => {
+        setCurrentComponent(component);
+    };
+
+    return (
+        <div>
+          <h1>Paige's Spotify Data</h1>
+            <button className="now-playing-button" onClick={() => handleClick('nowPlaying')}>Now Playing</button>
+            <button className="top-artists-button" onClick={() => handleClick('topArtists')}>Top Artists</button>
+            {currentComponent === 'nowPlaying' && <NowPlaying />}
+            {currentComponent === 'topArtists' && <TopArtists />}
+        </div>
+    );
 }
 
 export default App;
