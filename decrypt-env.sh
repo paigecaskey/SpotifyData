@@ -1,4 +1,7 @@
 #!/bin/bash
 
 # Decrypt .env.enc file
-gpg --decrypt --output .env .env.enc
+#!/bin/bash
+
+# Decrypt .env.enc to .env
+openssl aes-256-cbc -d -in .env.enc -out .env -k $paige
